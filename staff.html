@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Backoffice | NB DIVERSITY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+    <style>
+        /* Staff-specific styles */
+        .staff-login-screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-dark);
+            padding: 20px;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 420px;
+            background: rgba(10, 10, 15, 0.8);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 3rem 2.5rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+            color: white;
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+            outline: none;
+        }
+
+        .login-card input:focus {
+            border-color: var(--primary);
+        }
+
+        .login-error {
+            color: #ff4444;
+            font-size: 0.8rem;
+            text-align: center;
+            margin-top: 0.75rem;
+            display: none;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+            min-height: 100vh;
+            background: var(--bg-dark);
+        }
+
+        .dash-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(5,5,5,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 0;
+        }
+
+        .dash-topbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dash-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dash-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+
+        .dash-brand span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .btn-logout {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            padding: 6px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .btn-logout:hover {
+            background: rgba(255,50,50,0.15);
+            border-color: rgba(255,50,50,0.3);
+            color: #ff6666;
+        }
+
+        .dash-content {
+            padding: 2.5rem 0 4rem;
+        }
+
+        /* Stats Cards */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .stats-row { grid-template-columns: 1fr; }
+        }
+
+        .stat-card {
+            background: rgba(10,10,15,0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            border-color: rgba(212,175,55,0.3);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat-value .gold { font-size: inherit; }
+
+        /* Client Table */
+        .table-wrapper {
+            background: rgba(10,10,15,0.6);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .table-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .table-search {
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+            color: white;
+            font-family: inherit;
+            font-size: 0.85rem;
+            width: 220px;
+            outline: none;
+        }
+
+        .table-search:focus {
+            border-color: var(--primary);
+        }
+
+        .client-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .client-table thead tr {
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .client-table th {
+            padding: 1rem 1.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .client-table td {
+            padding: 1rem 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .client-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+        }
+
+        .client-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn-delete-row {
+            background: none;
+            border: none;
+            color: #555;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn-delete-row:hover {
+            color: #ff4444;
+            background: rgba(255,50,50,0.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-muted);
+        }
+
+        .empty-state p {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .table-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-export {
+            background: rgba(212,175,55,0.1);
+            border: 1px solid rgba(212,175,55,0.2);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-export:hover {
+            background: rgba(212,175,55,0.2);
+        }
+
+        @media (max-width: 600px) {
+            .table-header { flex-direction: column; gap: 1rem; align-items: stretch; }
+            .table-search { width: 100%; }
+            .table-actions { justify-content: space-between; }
+            .client-table th, .client-table td { padding: 0.75rem 1rem; font-size: 0.8rem; }
+        }
+    </style>
+</head>
+<body class="page-fade">
+
+    <!-- Login Screen -->
+    <div id="staff-auth" class="staff-login-screen">
+        <div class="login-card">
+            <div class="text-center mb-5">
+                <img src="/logo.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; margin-bottom: 1rem;">
+                <h2 style="font-size: 1.3rem; margin-bottom: 0.25rem;">Staff Backoffice</h2>
+                <p style="color: var(--text-muted); font-size: 0.85rem;">NB DIVERSITY x ARTENA</p>
+            </div>
+            <div style="margin-bottom: 1.5rem;">
+                <input type="password" id="staff-password" placeholder="Mot de passe" autocomplete="current-password">
+            </div>
+            <button id="btn-staff-login" class="btn btn-primary" style="width: 100%; padding: 14px;">Se connecter</button>
+            <p id="login-error" class="login-error">Mot de passe incorrect.</p>
+            <div class="text-center mt-4">
+                <a href="/" style="color: var(--text-muted); font-size: 0.8rem; text-decoration: none;">Retour au site</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="staff-panel" class="dashboard">
+        <!-- Topbar -->
+        <div class="dash-topbar">
+            <div class="container">
+                <div class="dash-brand">
+                    <img src="/logo.jpg" alt="Logo">
+                    <span>Backoffice</span>
+                </div>
+                <button id="btn-staff-logout" class="btn-logout">Déconnexion</button>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="dash-content">
+            <div class="container">
+                <!-- Stats -->
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-label">Total Inscrits</div>
+                        <div class="stat-value" id="stat-total">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Dernière inscription</div>
+                        <div class="stat-value" id="stat-last" style="font-size: 1.2rem; color: var(--text-muted);">—</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Statut</div>
+                        <div class="stat-value" style="font-size: 1.2rem;"><span class="gold">Actif</span></div>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="table-wrapper">
+                    <div class="table-header">
+                        <div class="table-actions">
+                            <h3>Clients enregistrés</h3>
+                            <button id="btn-export" class="btn-export">Exporter CSV</button>
+                        </div>
+                        <input type="text" id="search-clients" class="table-search" placeholder="Rechercher...">
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="client-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Email</th>
+                                    <th>Téléphone</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="client-list-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'nb_diversity_clients';
+        const STAFF_PASS = 'NB2026!';
+
+        function getClients() {
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+
+        function renderClients(filter = '') {
+            const tbody = document.getElementById('client-list-body');
+            const clients = getClients();
+            const query = filter.toLowerCase();
+            const filtered = clients.filter(c =>
+                !query ||
+                (c.lastname || '').toLowerCase().includes(query) ||
+                (c.firstname || '').toLowerCase().includes(query) ||
+                (c.email || '').toLowerCase().includes(query) ||
+                (c.phone || '').toLowerCase().includes(query)
+            );
+
+            // Stats
+            document.getElementById('stat-total').textContent = clients.length;
+            const lastClient = clients[clients.length - 1];
+            document.getElementById('stat-last').textContent = lastClient
+                ? `${lastClient.firstname || ''} ${lastClient.lastname || ''}`
+                : '—';
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6">
+                            <div class="empty-state">
+                                <p style="font-size: 1.5rem; margin-bottom: 0.5rem;">Aucun client</p>
+                                <p>Les inscriptions depuis le formulaire d'accueil apparaîtront ici.</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map((c, i) => `
+                <tr>
+                    <td>${c.date || '—'}</td>
+                    <td style="color: white; font-weight: 500;">${c.lastname || '—'}</td>
+                    <td>${c.firstname || '—'}</td>
+                    <td>${c.email || '—'}</td>
+                    <td>${c.phone || '—'}</td>
+                    <td><button class="btn-delete-row" data-index="${i}" title="Supprimer">✕</button></td>
+                </tr>
+            `).join('');
+
+            // Delete handlers
+            tbody.querySelectorAll('.btn-delete-row').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const idx = parseInt(btn.dataset.index);
+                    if (confirm('Supprimer ce client ?')) {
+                        const all = getClients();
+                        all.splice(idx, 1);
+                        localStorage.setItem(STORAGE_KEY, JSON.stringify(all));
+                        renderClients(document.getElementById('search-clients').value);
+                    }
+                });
+            });
+        }
+
+        function exportCSV() {
+            const clients = getClients();
+            if (clients.length === 0) return alert('Aucune donnée à exporter.');
+            const header = 'Date,Nom,Prénom,Email,Téléphone\n';
+            const rows = clients.map(c =>
+                `"${c.date || ''}","${c.lastname || ''}","${c.firstname || ''}","${c.email || ''}","${c.phone || ''}"`
+            ).join('\n');
+            const blob = new Blob([header + rows], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `nb_diversity_clients_${new Date().toISOString().slice(0, 10)}.csv`;
+            link.click();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const authScreen = document.getElementById('staff-auth');
+            const panel = document.getElementById('staff-panel');
+            const passInput = document.getElementById('staff-password');
+            const loginBtn = document.getElementById('btn-staff-login');
+            const logoutBtn = document.getElementById('btn-staff-logout');
+            const errorMsg = document.getElementById('login-error');
+            const searchInput = document.getElementById('search-clients');
+            const exportBtn = document.getElementById('btn-export');
+
+            // Check existing session
+            if (sessionStorage.getItem('staff_logged') === 'true') {
+                authScreen.style.display = 'none';
+                panel.style.display = 'block';
+                renderClients();
+            }
+
+            // Login
+            const doLogin = () => {
+                if (passInput.value === STAFF_PASS) {
+                    sessionStorage.setItem('staff_logged', 'true');
+                    authScreen.style.display = 'none';
+                    panel.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    renderClients();
+                } else {
+                    errorMsg.style.display = 'block';
+                    passInput.style.borderColor = '#ff4444';
+                    setTimeout(() => { passInput.style.borderColor = ''; }, 2000);
+                }
+            };
+
+            loginBtn.addEventListener('click', doLogin);
+            passInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') doLogin(); });
+
+            // Logout
+            logoutBtn.addEventListener('click', () => {
+                sessionStorage.removeItem('staff_logged');
+                panel.style.display = 'none';
+                authScreen.style.display = 'flex';
+                passInput.value = '';
+            });
+
+            // Search
+            searchInput.addEventListener('input', () => renderClients(searchInput.value));
+
+            // Export
+            exportBtn.addEventListener('click', exportCSV);
+        });
+    </script>
+</body>
+</html>

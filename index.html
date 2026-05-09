@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NB DIVERSITY x ARTENA | Accueil</title>
+    <meta name="description"
+        content="Une plateforme internationale moderne pour l'écosystème Artena et la communauté NB Diversity.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/jpeg" href="/logo.jpg">
+</head>
+
+<body class="page-fade">
+    <header class="navbar">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/logo.jpg" alt="Logo">
+                <span class="brand-name">NB DIVERSITY <span class="accent">x ARTENA</span></span>
+            </a>
+            <nav class="nav-links">
+                <a href="/" class="active">Accueil</a>
+                <a href="/about.html">À Propos</a>
+                <a href="/pass.html">Pass Membres</a>
+                <a href="/partners.html">Partenaires</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="#communities" class="btn btn-primary btn-sm">Rejoindre</a>
+            </div>
+            <button class="menu-toggle">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero">
+            <div class="hero-bg">
+                <video autoplay muted loop playsinline id="hero-video">
+                    <source src="/Video.mp4" type="video/mp4">
+                </video>
+                <div class="overlay"></div>
+            </div>
+            <div class="container grid-2" style="align-items: center; position: relative; z-index: 2;">
+                <!-- Text Content -->
+                <div class="hero-text-content" style="text-align: left;">
+                    <h1 class="reveal"
+                        style="font-size: clamp(3.5rem, 6vw, 5.5rem); line-height: 1.1; margin: 0; text-align: left;">NB
+                        DIVERSITY<br><span class="gold">x ARTENA</span></h1>
+                    <p class="hero-subtitle reveal" data-delay="0.2"
+                        style="text-align: left; margin: 1.5rem 0 2rem; font-size: 1.3rem;">One Vision. One Community.
+                        One Future.</p>
+
+                    <div class="open-video-btn reveal" data-delay="0.4" id="btn-open-video"
+                        style="justify-content: flex-start; margin: 0 0 2rem 0;">
+                        <div class="play-icon"></div>
+                        <span>Voir la présentation complète</span>
+                    </div>
+
+                    <div class="hero-btns reveal" data-delay="0.6" style="justify-content: flex-start;">
+                        <a href="#vision" class="btn btn-primary"
+                            style="padding: 16px 40px; font-size: 1.1rem;">Découvrir l'écosystème</a>
+                    </div>
+                </div>
+
+                <!-- Large Portrait Content -->
+                <div class="hero-visual-content"
+                    style="display: flex; justify-content: center; position: relative; animation: slideInLeft 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards; opacity: 0; transform: translateX(-40px);">
+                    <div class="img-glow-wrapper" style="width: 100%; max-width: 450px;">
+                        <img src="/nico1.png" alt="Nicolas"
+                            style="width: 100%; border-radius: 40px; border: 2px solid rgba(212, 175, 55, 0.3); box-shadow: 0 30px 60px rgba(0,0,0,0.8); object-fit: cover;">
+                    </div>
+                    <div class="founder-badge"
+                        style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); background: rgba(10,10,15,0.85); border: 1px solid var(--primary); padding: 12px 35px; border-radius: 50px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                        <span
+                            style="color: var(--primary); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem;">Fondateur
+                            NB DIVERSITY</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="vision" class="vision section-padding bg-darker">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title reveal">Notre Vision Web3</h2>
+                </div>
+                <div class="grid-3 mt-5">
+                    <div class="card-soft vision-card reveal">
+                        <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🌍</div>
+                        <h3>International</h3>
+                        <p class="mt-3" style="color: var(--text-muted);">Une vision globale sans frontières, unissant
+                            des passionnés du monde entier pour une croissance collective.</p>
+                    </div>
+                    <div class="card-soft vision-card reveal" data-delay="0.1">
+                        <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🧠</div>
+                        <h3>Arbitrage</h3>
+                        <p class="mt-3" style="color: var(--text-muted);">Stratégie intelligente basée sur l'arbitrage
+                            financier pour garantir une rentabilité stable et durable.</p>
+                    </div>
+                    <div class="card-soft vision-card reveal" data-delay="0.2">
+                        <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🎓</div>
+                        <h3>Éducation</h3>
+                        <p class="mt-3" style="color: var(--text-muted);">Un accompagnement de A à Z avec des outils et
+                            des capsules éducatives pour maîtriser le futur digital.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gateway Web3 (Vertically Centered) -->
+        <section id="redotpay" class="redotpay section-padding">
+            <div class="container grid-2 align-center">
+                <div class="card-soft redotpay-text reveal">
+                    <span
+                        style="background: var(--primary); color: black; padding: 5px 15px; border-radius: 5px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase;">Gateway
+                        Web3</span>
+                    <h2 class="mt-4">Passez au Web3 avec RedotPay</h2>
+                    <p class="mt-4" style="font-size: 1.1rem; color: var(--text-muted);">La solution indispensable pour
+                        connecter vos actifs numériques à votre quotidien. Payez, retirez et gérez vos gains Artena en
+                        toute simplicité.</p>
+                    <ul class="check-list">
+                        <li>Carte virtuelle instantanée</li>
+                        <li>Dépôts crypto sans frais</li>
+                        <li>Application sécurisée et fluide</li>
+                    </ul>
+                    <a href="https://www.redotpay.com" target="_blank" class="btn btn-primary mt-4">Créer mon compte</a>
+                </div>
+                <div class="redotpay-visual reveal" data-delay="0.3"
+                    style="display: flex; justify-content: center; align-items: center;">
+                    <img src="/flyer2.png" alt="RedotPay Flyer"
+                        style="width: 100%; max-width: 500px; border-radius: 24px; box-shadow: 0 30px 60px rgba(0,0,0,0.5);">
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Start (Intuitive Flow) -->
+        <section id="start" class="start section-padding bg-darker">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title reveal">Comment commencer ?</h2>
+                    <div class="mt-4 reveal" data-delay="0.1">
+                        <a href="/presentation.pdf" target="_blank" class="btn btn-primary btn-sm"
+                            style="background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: white;">
+                            📄 Document PDF complet
+                        </a>
+                    </div>
+                </div>
+                <div class="steps-flow">
+                    <div class="step-card reveal">
+                        <div class="step-num-icon">01</div>
+                        <h4>Vision</h4>
+                        <p class="mt-3" style="font-size: 0.9rem; color: var(--text-muted);">Imprégnez-vous de
+                            l'écosystème Artena pour saisir toutes les opportunités.</p>
+                    </div>
+                    <div class="step-card reveal" data-delay="0.1">
+                        <div class="step-num-icon">02</div>
+                        <h4>Rejoindre</h4>
+                        <p class="mt-3" style="font-size: 0.9rem; color: var(--text-muted);">Intégrez le groupe WhatsApp
+                            officiel correspondant à votre zone géographique.</p>
+                    </div>
+                    <div class="step-card reveal" data-delay="0.2">
+                        <div class="step-num-icon">03</div>
+                        <h4>Config</h4>
+                        <p class="mt-3" style="font-size: 0.9rem; color: var(--text-muted);">Configurez vos outils comme
+                            RedotPay pour être prêt à recevoir vos gains.</p>
+                    </div>
+                    <div class="step-card reveal" data-delay="0.3">
+                        <div class="step-num-icon">04</div>
+                        <h4>Suivi</h4>
+                        <p class="mt-3" style="font-size: 0.9rem; color: var(--text-muted);">Bénéficiez d'un coaching
+                            stratégique pour optimiser votre développement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Communities (Centered & Boxed) -->
+        <section id="communities" class="communities section-padding">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title reveal">Nos Communautés WhatsApp</h2>
+                </div>
+                <div class="grid-4 mt-5">
+                    <div class="card-soft comm-card reveal">
+                        <img src="/logogroupe.png" alt="Europe"
+                            style="width: 70px; height: 70px; border-radius: 20px; margin-bottom: 1.5rem;">
+                        <h4>Europe FR</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 1rem 0;">Hub stratégique pour
+                            l'Europe francophone.</p>
+                        <a href="https://chat.whatsapp.com/FUnv4KLo9zFLXXWWcLmtdq" target="_blank"
+                            class="btn btn-primary btn-social-whatsapp">Rejoindre</a>
+                    </div>
+                    <div class="card-soft comm-card reveal" data-delay="0.1">
+                        <img src="/logogroupe.png" alt="Afrique"
+                            style="width: 70px; height: 70px; border-radius: 20px; margin-bottom: 1.5rem;">
+                        <h4>Afrique FR</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 1rem 0;">Communauté dynamique en
+                            Afrique francophone.</p>
+                        <a href="https://chat.whatsapp.com/KzYOSlqnyBaJD88eXXzDu5" target="_blank"
+                            class="btn btn-primary btn-social-whatsapp">Rejoindre</a>
+                    </div>
+                    <div class="card-soft comm-card reveal" data-delay="0.2">
+                        <img src="/logogroupe.png" alt="Asie"
+                            style="width: 70px; height: 70px; border-radius: 20px; margin-bottom: 1.5rem;">
+                        <h4>Asia Group</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 1rem 0;">Connecting Web3
+                            enthusiasts in Asia.</p>
+                        <a href="https://chat.whatsapp.com/JoxWYovA3Tn6P9PTU7BpCL" target="_blank"
+                            class="btn btn-primary btn-social-whatsapp">Join Now</a>
+                    </div>
+                    <div class="card-soft comm-card reveal" data-delay="0.3">
+                        <img src="/logogroupe.png" alt="Global"
+                            style="width: 70px; height: 70px; border-radius: 20px; margin-bottom: 1.5rem;">
+                        <h4>Global Hub</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-muted); margin: 1rem 0;">The international
+                            English-speaking community.</p>
+                        <a href="https://chat.whatsapp.com/G3Fxvh7AIFWAwKO0SDlnau" target="_blank"
+                            class="btn btn-primary btn-social-whatsapp">Join Hub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ (Better Organized) -->
+        <section id="faq" class="faq section-padding bg-darker">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title reveal">Questions Fréquentes</h2>
+                </div>
+                <div class="faq-grid mt-5">
+                    <div class="card-soft reveal">
+                        <h4 style="color: var(--primary);">Pourquoi l'arbitrage ?</h4>
+                        <p class="mt-3" style="color: var(--text-muted);">L'arbitrage permet de tirer profit des écarts
+                            de prix entre différents marchés de manière sécurisée et mathématique.</p>
+                    </div>
+                    <div class="card-soft reveal" data-delay="0.1">
+                        <h4 style="color: var(--primary);">Comment rejoindre NB Diversity ?</h4>
+                        <p class="mt-3" style="color: var(--text-muted);">Il vous suffit de vous inscrire via le
+                            formulaire d'arrivée et de rejoindre le groupe WhatsApp de votre choix.</p>
+                    </div>
+                    <div class="card-soft reveal" data-delay="0.2">
+                        <h4 style="color: var(--primary);">Qu'est-ce que RedotPay ?</h4>
+                        <p class="mt-3" style="color: var(--text-muted);">C'est une plateforme Web3 permettant
+                            d'utiliser vos cryptomonnaies pour vos achats réels via une carte bancaire.</p>
+                    </div>
+                    <div class="card-soft reveal" data-delay="0.3">
+                        <h4 style="color: var(--primary);">Besoin d'expérience ?</h4>
+                        <p class="mt-3" style="color: var(--text-muted);">Non, nous vous accompagnons de A à Z avec des
+                            outils simplifiés et une éducation complète.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="#communities" class="social-icon wa">WhatsApp</a>
+                <a href="https://t.me/n_infinity13" target="_blank" class="social-icon tg">Telegram</a>
+                <a href="https://www.tiktok.com/@niconeteam" target="_blank" class="social-icon tk">TikTok</a>
+                <a href="https://youtube.com/@nicolasbollette9879" target="_blank" class="social-icon yt">YouTube</a>
+            </div>
+            <p style="color: var(--text-muted);">&copy; 2026 NB DIVERSITY x ARTENA. Tous droits réservés.</p>
+            <div style="margin-top: 30px; opacity: 0.1; font-size: 0.7rem;">
+                <a href="/staff.html" style="color: inherit; text-decoration: none;">Staff Access</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="modal-register" class="modal">
+        <div class="modal-content">
+            <button type="button" class="close-modal" id="close-register">&times;</button>
+            <h2 class="text-center mb-4">Bienvenue</h2>
+            <p class="text-center text-muted mb-4">Rejoignez l'écosystème NB Diversity.</p>
+            <form id="register-form">
+                <div style="margin-bottom: 1rem;"><input type="text" name="lastname" required placeholder="Nom"
+                        style="width:100%; padding:15px; border-radius:12px; border:1px solid #333; background:#111; color:#fff;">
+                </div>
+                <div style="margin-bottom: 1rem;"><input type="text" name="firstname" required placeholder="Prénom"
+                        style="width:100%; padding:15px; border-radius:12px; border:1px solid #333; background:#111; color:#fff;">
+                </div>
+                <div style="margin-bottom: 1rem;"><input type="email" name="email" required placeholder="Email"
+                        style="width:100%; padding:15px; border-radius:12px; border:1px solid #333; background:#111; color:#fff;">
+                </div>
+                <div style="margin-bottom: 1.5rem;"><input type="tel" name="phone" required placeholder="Téléphone"
+                        style="width:100%; padding:15px; border-radius:12px; border:1px solid #333; background:#111; color:#fff;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-video" class="modal">
+        <button class="close-modal">&times;</button>
+        <div class="modal-content video-modal-content">
+            <video controls id="presentation-video">
+                <source src="/Video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+</body>
+
+</html>
