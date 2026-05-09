@@ -424,6 +424,33 @@ h1, h2, h3, h4, .brand-name {
   100% { opacity: 1; transform: translateX(0); }
 }
 
+/* Portrait Nico — Hover click animation */
+#nico-link { position: relative; }
+#nico-link::after {
+  content: 'En savoir plus →';
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(10,10,15,0.85);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 20px;
+  border-radius: 50px;
+  border: 1px solid rgba(212,175,55,0.4);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  white-space: nowrap;
+  pointer-events: none;
+}
+#nico-link:hover { transform: scale(1.03); }
+#nico-link:hover img { border-color: rgba(212,175,55,0.8); box-shadow: 0 30px 80px rgba(212,175,55,0.2), 0 0 0 1px rgba(212,175,55,0.15); }
+#nico-link:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
+
 /* Modals */
 .modal {
   position: fixed; inset: 0; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
